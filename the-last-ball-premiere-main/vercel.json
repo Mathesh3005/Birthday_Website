@@ -1,7 +1,7 @@
 {
   "rootDirectory": "the-last-ball-premiere-main",
   "buildCommand": "npm install && npm run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "the-last-ball-premiere-main",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
