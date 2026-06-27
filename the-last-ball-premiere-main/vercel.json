@@ -1,4 +1,5 @@
 {
+  "rootDirectory": "the-last-ball-premiere-main",
   "buildCommand": "npm install && npm run build",
   "outputDirectory": "dist",
   "rewrites": [
