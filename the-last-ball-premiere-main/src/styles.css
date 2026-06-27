@@ -1,0 +1,193 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --font-display: "Cinzel", "Playfair Display", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --gold: oklch(0.86 0.17 90);
+  --gold-soft: oklch(0.78 0.14 85);
+  --navy: oklch(0.22 0.06 260);
+  --navy-deep: oklch(0.12 0.04 260);
+
+  --background: oklch(0.09 0.03 260);
+  --foreground: oklch(0.98 0.01 90);
+  --card: oklch(0.16 0.04 260);
+  --card-foreground: oklch(0.98 0.01 90);
+  --popover: oklch(0.16 0.04 260);
+  --popover-foreground: oklch(0.98 0.01 90);
+  --primary: oklch(0.86 0.17 90);
+  --primary-foreground: oklch(0.12 0.04 260);
+  --secondary: oklch(0.22 0.06 260);
+  --secondary-foreground: oklch(0.98 0.01 90);
+  --muted: oklch(0.2 0.04 260);
+  --muted-foreground: oklch(0.7 0.02 90);
+  --accent: oklch(0.86 0.17 90);
+  --accent-foreground: oklch(0.12 0.04 260);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 90);
+  --border: oklch(0.3 0.04 260 / 50%);
+  --input: oklch(0.3 0.04 260);
+  --ring: oklch(0.86 0.17 90);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body, #root { height: 100%; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+}
+
+@utility text-gold-glow {
+  color: #FFD700;
+  text-shadow: 0 0 12px rgba(255,215,0,0.7), 0 0 32px rgba(255,215,0,0.35);
+}
+
+@utility btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #081C35;
+  background: linear-gradient(135deg, #FFE15C 0%, #FFD700 50%, #C9A227 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,215,0,0.4),
+    0 10px 30px -8px rgba(255,215,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+}
+@utility btn-premium-hover {
+  &:hover { transform: translateY(-2px) scale(1.03); filter: brightness(1.05); box-shadow: 0 0 0 1px rgba(255,215,0,0.7), 0 18px 40px -10px rgba(255,215,0,0.7), inset 0 1px 0 rgba(255,255,255,0.5); }
+  &:active { transform: translateY(0) scale(0.98); }
+}
+
+@utility stadium-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 110%, rgba(80,140,90,0.35), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% -10%, rgba(255,215,0,0.18), transparent 60%),
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06), transparent 40%),
+    radial-gradient(circle at 80% 25%, rgba(255,255,255,0.05), transparent 40%),
+    linear-gradient(180deg, #050a18 0%, #081C35 50%, #04101f 100%);
+}
+
+@utility golden-frame {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,215,0,0.05));
+  padding: 3px;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 40px rgba(255,215,0,0.25), 0 20px 60px -20px rgba(0,0,0,0.8);
+}
+
+@utility glass-panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 1.25rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 50px -20px rgba(0,0,0,0.6);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@utility text-shimmer {
+  background: linear-gradient(90deg, #FFD700 0%, #fff7c2 50%, #FFD700 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@utility floaty { animation: float-y 5s ease-in-out infinite; }
+
+@keyframes glow-pulse {
+  0%,100% { box-shadow: 0 0 30px rgba(255,215,0,0.35), 0 0 60px rgba(255,215,0,0.15); }
+  50% { box-shadow: 0 0 50px rgba(255,215,0,0.6), 0 0 100px rgba(255,215,0,0.25); }
+}
+@utility glow-pulse { animation: glow-pulse 3.5s ease-in-out infinite; }
+
+@keyframes sweep {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%) skewX(-20deg); }
+}
+@utility light-sweep {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    width: 40%;
+    animation: sweep 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+@utility particle {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: radial-gradient(circle, #FFD700 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-up linear infinite;
+  pointer-events: none;
+}
